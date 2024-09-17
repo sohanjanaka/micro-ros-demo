@@ -43,4 +43,4 @@ Micro ROS Demonstration program
     
     sudo docker pull microros/micro-ros-agent:foxy
 
-    sudo docker run -it --rm -v /dev/ttyUSB0:/dev/ttyUSB0 --privileged microros/micro-ros-agent:foxy serial --dev /dev/ttyUSB0
+    sudo docker run -it --rm --privileged -v /dev/ttyUSB0:/dev/ttyUSB0 --privileged microros/micro-ros-agent:foxy serial --dev /dev/ttyUSB0
