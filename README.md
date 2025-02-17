@@ -39,8 +39,14 @@ Micro ROS Demonstration program
 
 # docker approch
 
-    install docker engine
-    
-    sudo docker pull microros/micro-ros-agent:foxy
+install docker engine (docker engine is recommended for serial communication)
 
-    sudo docker run -it --rm -v /dev/ttyUSB0:/dev/ttyUSB0 --privileged microros/micro-ros-agent:foxy serial --dev /dev/ttyUSB0
+microros over wifi
+```bash
+sudo docker run -it --rm -p 8888:8888/udp microros/micro-ros-agent:humble udp4 --port 8888
+```
+
+microros over serial
+```bash  
+sudo docker run -it --rm -v /dev/ttyUSB0:/dev/ttyUSB0 --privileged microros/micro-ros-agent:humble serial --dev /dev/ttyUSB0
+```
