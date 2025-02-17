@@ -11,6 +11,6 @@ or follow:
 ## Arduino IDE configuration 
 You have to make following changes in Arduino IDE to make code work:
 
-1. Download zip file from this git repository, branch foxy [https://github.com/micro-ROS/micro_ros_arduino/tree/humble](https://github.com/micro-ROS/micro_ros_arduino/tree/humble)
+1. Download zip file from this git repository, branch humble [https://github.com/micro-ROS/micro_ros_arduino/tree/humble](https://github.com/micro-ROS/micro_ros_arduino/tree/humble)
 2. **Sketsch -> add Zip Library -> Select the Downloaded zip file**
 
