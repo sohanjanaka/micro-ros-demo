@@ -33,11 +33,3 @@ pip install pyserial
 7. Now try to upload simple code to the ESP32 and test.
 
 [reference](https://randomnerdtutorials.com/installing-the-esp32-board-in-arduino-ide-windows-instructions/)
-
-
-## Configure Micro-ROS in Arduino IDE
-You have to make following changes in Arduino IDE to make code work:
-
-1. Download zip file from this git repository, branch humble [https://github.com/micro-ROS/micro_ros_arduino/tree/humble](https://github.com/micro-ROS/micro_ros_arduino/tree/humble)
-2. **Sketsch -> add Zip Library -> Select the Downloaded zip file**
-
