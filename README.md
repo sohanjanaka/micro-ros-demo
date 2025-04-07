@@ -27,15 +27,23 @@ Micro ROS Demonstration program
     sudo apt update && rosdep update
     rosdep install --from-paths src --ignore-src -y
 
+    # Install pip
+    sudo apt-get install python3-pip
+
     # Build micro-ROS tools and source them
     colcon build
     source install/local_setup.bash
+
+    # Build micro-ROS agent
+    ros2 run micro_ros_setup create_agent_ws.sh
+    ros2 run micro_ros_setup build_agent.sh
 
     # run micro_ros_agent serial
     ros2 run micro_ros_agent micro_ros_agent serial --dev /dev/ttyUSB0
     # run micro_ros_agent udp / wifi
     ros2 run micro_ros_agent micro_ros_agent udp4 --port 8888
 
+* if you getting an error while building, run "source install/local_setup.bash" and run that failed command again.
 
 # docker approch
 
