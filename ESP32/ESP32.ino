@@ -12,13 +12,27 @@ std_msgs__msg__String msg;
 rclc_support_t support;
 rcl_allocator_t allocator;
 rcl_node_t node;
+int retryCount = 0;
 
-
-#define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){}}
+#define RCCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){errorLoop();}}
 #define RCSOFTCHECK(fn) { rcl_ret_t temp_rc = fn; if((temp_rc != RCL_RET_OK)){}}
 
-void setup() {
-  
+void errorLoop() {
+
+  retryCount++;
+  delay(100);
+
+  if (retryCount > 5) {
+    Serial.println("[ERROR LOOP] Too many retries, halting or resetting system...");
+    // force a system reset and try again
+    ESP.restart(); 
+  } 
+  else {
+    microrosInit();
+  }
+}  
+
+void microrosInit(){
   // set_microros_wifi_transports("SSID", "password", "xxx.xxx.xxx.xxx", 8888); // microros over wifi
   set_microros_transports(); // microros over serial
   allocator = rcl_get_default_allocator();
@@ -30,7 +44,11 @@ void setup() {
   msg.data.data = (char *)malloc(50 * sizeof(char)); // Allocate memory for the string
   msg.data.size = 0;
   msg.data.capacity = 50;
+}
 
+void setup() {
+  Serial.begin(115200);
+  microrosInit();
 }
 
 float cal_ultrasonic(int us_pin){
